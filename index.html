@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="https://www.google.com/jsapi"
-        type="text/javascript"></script>
-    <script type="text/javascript">
-    google.load("search", "1", {"nocss" : true});
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/FeedEk.js"></script>
+	<script type="text/javascript">
+	function s_google() {
+		loadSecondScript("https://www.google.com/jsapi");
+		google.load("search", "1", {"nocss" : true});
+		var searchControl = new google.search.SearchControl();
+		searchControl.addSearcher(new google.search.WebSearch());
+		searchControl.draw(document.getElementById("searchcontrol"));
+	}
+	function load() {
+	  checkinit()
+	  check_settings()
+	  if (settings.rss == true){
+		rss()
+	  }
+	  if (settings.google){
+	  	
+	  }
 
-      // Call this function when the page has been loaded
-      function s_google() {
-        var searchControl = new google.search.SearchControl();
-        searchControl.addSearcher(new google.search.WebSearch());
-        searchControl.draw(document.getElementById("searchcontrol"));
-      }
+	}
+	
+	function rss (argument) {
+	  $('#rss').FeedEk({
+		FeedUrl: 'http://rss.cnn.com/rss/edition.rss',
+		MaxCount: 10,
+		ShowDesc: true,
+		ShowPubDate: false,
+		DescCharacterLimit: 150
+	});
+	}
+	
     </script>
     <title>Startpage</title>
 
@@ -27,7 +48,7 @@
     <![endif]-->
   </head>
 
-  <body onload="checkCookie()">
+  <body onload="load()">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -37,13 +58,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Startpage</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="show_settings()">Settings</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -54,9 +74,6 @@
       <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
           <div class="jumbotron">
             <h1>Hello, world!</h1>
             <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
@@ -64,7 +81,7 @@
           <div class="row">
             <div class="col-6 col-sm-6 col-lg-4" id="searchcontrol">
               <h2>Google</h2>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button" onclick="s_google()" >Start</a></p>
+              <p><a class="btn btn-default" href="#" role="button" onclick="s_google()" >Start</a></p>
             </div><!--/span-->
             <div class="col-6 col-sm-6 col-lg-4">
               <h2>Heading</h2>
@@ -95,18 +112,7 @@
         </div><!--/span-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-            <a href="http://jkoan.de" class="list-group-item active">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-            <a href="http://jkoan.de" class="list-group-item">Link</a>
-          </div>
+          <div class="list-group" id="rss"></div>
         </div><!--/span-->
       </div><!--/row-->
 
@@ -146,7 +152,51 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button>
+		        <button type="button" class="btn btn-primary" onclick="step_3()">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">Settings</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form role="form" class="form-horizontal">
+					<div class="form-group">
+				        <label class="col-sm-2 control-label" for="inputEmail3">Rss</label>
+				        <div class="col-sm-10">
+				        	<div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-primary" id="rss_on">
+							    <input type="radio" name="options"> On
+							  </label>
+							  <label class="btn btn-primary" id="rss_off">
+							    <input type="radio" name="options" > Off
+							  </label>
+							</div>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-2 control-label" for="inputEmail3">Google</label>
+				        <div class="col-sm-10">
+				        	<div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-primary" id="google_on">
+							    <input type="radio" name="options"> On
+							  </label>
+							  <label class="btn btn-primary" id="google_off">
+							    <input type="radio" name="options" > Off
+							  </label>
+							</div>
+				        </div>
+				    </div>
+				</form>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" onclick="save_settings()">Save Settings</button>
 		      </div>
 		    </div>
 		  </div>
@@ -157,7 +207,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/tutorial.js"></script>
   </body>
