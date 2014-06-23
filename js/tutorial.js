@@ -5,7 +5,9 @@
 function step_1() {
 	$('#step_1').modal('hide');
 	setCookie("init","ok",365);
-	$('#step_2').modal('show');
+	/*$('#step_2').modal('show');*/
+	step_3();
+	main();
 }
 
 function step_2() {

@@ -3,14 +3,16 @@
  */
 
 function main() {
-    checkinit();
-    check_settings();
-    if (settings.rss == true){
-        rss(settings.rss_feed);
+    if (checkinit()){
+        check_settings();
+        if (settings.rss == true){
+            rss(settings.rss_feed);
+        }
+        if(settings.google = true){
+            $("#search_google").attr("target","_blank");
+       }    
     }
-    if(settings.google = true){
-        $("#search_google").attr("target","_blank");
-    }
+    
 }
 
 function rss (feed) {
@@ -59,6 +61,7 @@ function checkinit() {
     if (init == "") {
         load_js_script("js/tutorial.js");
         $('#step_1').modal('show');
+        return false;
     }
     else{
         var index=getCookie("index");
