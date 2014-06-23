@@ -27,10 +27,10 @@ function rss (feed) {
     }
 }
 
- function learnRegExp(s) {    
-      var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-      return regexp.test(s);    
- }
+function learnRegExp(s) {
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    return regexp.test(s);    
+}
 
 function setCookie(cname,cvalue,exdays) {
     var d = new Date();
@@ -95,21 +95,36 @@ function show_settings(){
         $('#google_off').addClass('active');
         $('#google_on').removeClass('active');
     }
-    if(settings.rss_feed != ""){
-        $('#google_on').val(settings.rss_feed);
+    if(settings.rss_feed){
+        $('#rss_feed').val(settings.rss_feed);
     }
     else{
-        $('#google_on').val();
+        $('#rss_feed').val('http://rss.cnn.com/rss/edition.rss');
     }
     $('#modal_settings').modal('show');
 }
 
 function save_settings() {
+    if ($('#rss_feed').val()) {
+        settings.rss_feed = $('#rss_feed').val();
+    }
+    else{
+        settings.rss_feed = 'http://rss.cnn.com/rss/edition.rss';
+    }
     if($('#rss_on').hasClass('active')){
         settings.rss = true;
+        if (settings.rss_feed != "") {
+            rss(settings.rss_feed);
+            $('#sidebar').removeClass('none');
+            $('#main_row').removeClass('col-sm-12').addClass('col-sm-9');
+        };
+        
     }
     if($('#rss_off').hasClass('active')){
         settings.rss = false;
+        $('#rss').html('');
+        $('#sidebar').addClass('none');
+        $('#main_row').addClass('col-sm-12').removeClass('col-sm-9');
     }
     if($('#google_on').hasClass('active')){
         settings.google = true;
