@@ -4,13 +4,13 @@
 
 function main() {
     if (checkinit()){
-        check_settings();
+        if (check_settings()){
         if (settings.rss == true){
             rss(settings.rss_feed);
         }
         if(settings.google = true){
             $("#search_google").attr("target","_blank");
-       }    
+       }    }
     }
     
 }
@@ -77,6 +77,7 @@ function load_js_script(src) {
 }
 
 function show_settings(){
+    check_settings();
     if(settings.rss == true){
         $('#rss_on').addClass('active');
         $('#rss_off').removeClass('active');

@@ -7,7 +7,6 @@ function step_1() {
 	setCookie("init","ok",365);
 	/*$('#step_2').modal('show');*/
 	step_3();
-	main();
 }
 
 function step_2() {
@@ -20,4 +19,6 @@ function step_3() {
 	};
 	var s_json = JSON.stringify(json);
 	setCookie("index",s_json,365);
+	main();
+	show_settings();
 }
