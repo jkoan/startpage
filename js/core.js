@@ -3,23 +3,18 @@
  */
 
 function main() {
-    if (checkinit()){
-        check_settings();
-        
-            if (settings.rss){
-                rss(settings.rss_feed);
-                sidebar(1);
-            }
-            if (settings.rss){
-                
-            }
-            if(settings.google == true){
-                $("#search_google").attr("target","_blank");
-            }
-            sidebar(0);
-       
-    }
-    
+    checkinit();
+    check_settings();
+    if (settings.rss){
+        rss(settings.rss_feed);
+        sidebar(1);
+    };
+    if (!settings.rss){
+        sidebar(0);
+    };
+    if(settings.google == true){
+        $("#search_google").attr("target","_blank");
+    };
 }
 
 function update_settings(){
