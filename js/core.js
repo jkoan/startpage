@@ -4,30 +4,53 @@
 
 function main() {
     if (checkinit()){
-        if (check_settings()){
-        if (settings.rss == true){
-            rss(settings.rss_feed);
-        }
-        if(settings.google = true){
-            $("#search_google").attr("target","_blank");
-       }    }
+        check_settings();
+        
+            if (settings.rss){
+                rss(settings.rss_feed);
+                sidebar(1);
+            }
+            if (settings.rss){
+                
+            }
+            if(settings.google == true){
+                $("#search_google").attr("target","_blank");
+            }
+            sidebar(0);
+       
     }
     
 }
 
+function update_settings(){
+    check_settings();
+    
+}
+
 function rss (feed) {
-    if (learnRegExp(feed)){
+    if (val_url(feed)){
     $('#rss').FeedEk({
         FeedUrl: feed,
         MaxCount: 10,
         ShowDesc: true,
-        ShowPubDate: false,
+        ShowPubDate: true,
         DescCharacterLimit: 150
         });
     }
 }
 
-function learnRegExp(s) {
+function sidebar(on_off) {
+    if(on_off == 1){
+        $('#sidebar').removeClass('none');
+        $('#main_row').removeClass('col-sm-12').addClass('col-sm-9');
+    }
+    else{
+        $('#sidebar').addClass('none');
+        $('#main_row').addClass('col-sm-12').removeClass('col-sm-9');
+    }
+}
+
+function val_url(s) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     return regexp.test(s);    
 }
@@ -64,8 +87,7 @@ function checkinit() {
         return false;
     }
     else{
-        var index=getCookie("index");
-        json_index = JSON.parse(index);
+        check_settings();
     }
 }
 
@@ -99,7 +121,7 @@ function show_settings(){
         $('#rss_feed').val(settings.rss_feed);
     }
     else{
-        $('#rss_feed').val('http://rss.cnn.com/rss/edition.rss');
+        $('#rss_feed').val('https://github.com/jkoan/startpage/commits/gh-pages.atom');
     }
     $('#modal_settings').modal('show');
 }
@@ -109,22 +131,20 @@ function save_settings() {
         settings.rss_feed = $('#rss_feed').val();
     }
     else{
-        settings.rss_feed = 'http://rss.cnn.com/rss/edition.rss';
+        settings.rss_feed = 'https://github.com/jkoan/startpage/commits/gh-pages.atom';
     }
     if($('#rss_on').hasClass('active')){
         settings.rss = true;
         if (settings.rss_feed != "") {
             rss(settings.rss_feed);
-            $('#sidebar').removeClass('none');
-            $('#main_row').removeClass('col-sm-12').addClass('col-sm-9');
+            sidebar(1);
         };
         
     }
     if($('#rss_off').hasClass('active')){
         settings.rss = false;
         $('#rss').html('');
-        $('#sidebar').addClass('none');
-        $('#main_row').addClass('col-sm-12').removeClass('col-sm-9');
+        sidebar(0);
     }
     if($('#google_on').hasClass('active')){
         settings.google = true;
