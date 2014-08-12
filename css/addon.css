@@ -56,10 +56,10 @@ padding: 30px 0;
 .gsc-input{
 	width: 100%;
 }
-itemDate {
+.itemDate {
 	margin: 0 0 0 10px;
 }
-feed div {
+.feed div {
 	display: inline;
 }
 .feed{width:263px; list-style:none outside none;background-color:#FFFFFF; border:1px solid #D3CAD7; padding:4px 6px; color:#3E3E3E;}
