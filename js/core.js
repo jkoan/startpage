@@ -1,7 +1,7 @@
 /**
  * @author jkoan@jkoan.de
  */
-
+version = 0001;
 function main() {
     checkinit();
     check_settings();
@@ -15,6 +15,15 @@ function main() {
     if(settings.google == true){
         $("#search_google").attr("target","_blank");
     };
+    $('edit').load( "http://raw.githubusercontent.com/jkoan/startpage/gh-pages/.project", function( data ) {
+        if (data < version) {
+            $('#newversion').modal();
+        };
+    });
+}
+
+function add_modal(id, title, body, footer) {
+  return '<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel">Settings</h4></div><div class="modal-body">'+body+'</div><div class="modal-footer"><button type="button" class="btn btn-primary" onclick="save_settings()">Save Settings</button></div></div></div></div>';
 }
 
 function update_settings(){
@@ -22,14 +31,22 @@ function update_settings(){
     
 }
 
+function add_new(pre_for, colum, html) {
+    if(pre_for == true){
+        $('#colum'+colum).append(html);
+    }
+    else{
+        $('#colum'+colum).prepend(html);
+    }
+}
+
 function rss (feed) {
     if (val_url(feed)){
     $('#rss').FeedEk({
         FeedUrl: feed,
         MaxCount: 10,
-        ShowDesc: true,
+        ShowDesc: false,
         ShowPubDate: true,
-        DescCharacterLimit: 150
         });
     }
 }
@@ -47,7 +64,7 @@ function sidebar(on_off) {
 
 function val_url(s) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    return regexp.test(s);    
+    return regexp.test(s);
 }
 
 function setCookie(cname,cvalue,exdays) {
