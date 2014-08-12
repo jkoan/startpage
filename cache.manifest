@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# 2014-08-12:v1
+
+# Explicitly cached entries
+index.html
+css/style.css
+css/addon.css
+css/bootstrap.min.css
+js/FeedEk.js
+js/api.js
+js/core.js
+js/bootstrap.min.js
+
+FALLBACK:
+/ /index.html
+
+NETWORK:
+*
+
+# Additional resources to cache
+CACHE:
+img/lader.gif

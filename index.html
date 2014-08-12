@@ -1,205 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<script src="js/core.js"></script>
+	<script src="js/api.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/FeedEk.js"></script>
-    <title>Startpage</title>
+	<title>Startpage</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/addon.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/addon.css" rel="stylesheet">
 	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
   </head>
 
   <body onload="main()">
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Startpage</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#" onclick="show_settings()">Settings</a></li>
-          </ul>
-          <form role="form" class="navbar-form navbar-right" action="https://www.google.de/search" method="get" id="search_google">
-            <div class="form-group">
-				        <div>
-				        	<div class="btn-group">
+	<div id="body">
+	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="#">Startpage</a>
+		</div>
+		<div class="collapse navbar-collapse">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#" onclick="show_settings()">Settings</a></li>
+			<li id="edit"><a href="#" onclick="edit()">Edit</a></li>
+		  </ul>
+		  <form role="form" class="navbar-form navbar-right" action="https://www.google.de/search" method="get" id="search_google">
+			<div class="form-group">
+						<div>
+							<div class="btn-group">
 							  <input type="text" name="q" class="btn btn-text active" id="googl_content" placeholder="Type something...">
 								<button class="btn btn-primary" type="submit">Start</button>							  
 							</div>
-				        </div>
-				    </div>
-          </form>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
+						</div>
+					</div>
+		  </form>
+		</div><!-- /.nav-collapse -->
+	  </div><!-- /.container -->
+	</div><!-- /.navbar -->
 
-    <div class="container">
+	<div class="container">
 
-      <div class="row row-offcanvas row-offcanvas-right">
+	  <div class="row row-offcanvas row-offcanvas-right">
 
-        <div id="main_row" class="col-xs-12 col-sm-9">
-          <div class="jumbotron">
-            <h1>Startpage</h1>
-            <p>Here goes some more Content if I know which.</p>
-          </div>
-          <div class="row">
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="http://jkoan.de" role="button" >View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
+		<div id="main_row" class="col-xs-12 col-sm-9">
+		  <div class="jumbotron">
+			<h1>Startpage</h1>
+			<p>Here goes some more Content if I know which.</p>
+		  </div>
+		  <div class="row">
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
+			</div><!--/span-->
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
+			</div><!--/span-->
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
+			</div><!--/span-->
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
+			</div><!--/span-->
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button">View details &raquo;</a></p>
+			</div><!--/span-->
+			<div class="col-6 col-sm-6 col-lg-4">
+			  <h2>Heading</h2>
+			  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+			  <p><a class="btn btn-default" href="http://jkoan.de" role="button" >View details &raquo;</a></p>
+			</div><!--/span-->
+		  </div><!--/row-->
+		</div><!--/span-->
 
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group" id="rss"></div>
-        </div><!--/span-->
-      </div><!--/row-->
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+		  <div class="list-group" id="rss"></div>
+		</div><!--/span-->
+	  </div><!--/row-->
 
-      <hr>
+	  <hr>
 
-      <footer>
-        <p>&copy; Jkoan 2014</p>
-      </footer>
+	  <footer>
+		<p>&copy; Jkoan 2014</p>
+	  </footer>
 
-    </div><!--/.container-->
+	</div><!--/.container-->
 	<div><!-- Modal -->
 		<div class="modal fade" id="step_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p>Tutorial is not finish ;)</p>
-		        <p>Click <button type="submit" class="btn btn-primary">Continue</button> to Continue</p> 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" onclick="step_1()" class="btn btn-primary">Continue</button>
-		      </div>
-		    </div>
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>Tutorial is not finish ;)</p>
+				<p>Click <button type="submit" class="btn btn-primary">Continue</button> to Continue</p> 
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" onclick="step_1()" class="btn btn-primary">Continue</button>
+			  </div>
+			</div>
 		  </div>
 		</div>
 		<div class="modal fade" id="step_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-		      </div>
-		      <div class="modal-body">
-		        ...
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary" onclick="step_3()">Save changes</button>
-		      </div>
-		    </div>
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="step_3()">Save changes</button>
+			  </div>
+			</div>
 		  </div>
 		</div>
 		<div class="modal fade" id="modal_settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title" id="myModalLabel">Settings</h4>
-		      </div>
-		      <div class="modal-body">
-		        <form role="form" class="form-horizontal">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Settings</h4>
+			  </div>
+			  <div class="modal-body">
+				<form role="form" class="form-horizontal">
 					<div class="form-group">
-				        <label class="col-sm-4 control-label" for="inputEmail3">Rss</label>
-				        <div class="col-sm-6">
-				        	<div class="btn-group" data-toggle="buttons">
+						<label class="col-sm-4 control-label" for="inputEmail3">Rss</label>
+						<div class="col-sm-6">
+							<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-primary" id="rss_on">
-							    <input type="radio" name="options"> On
+								<input type="radio" name="options"> On
 							  </label>
 							  <label class="btn btn-primary" id="rss_off">
-							    <input type="radio" name="options" > Off
+								<input type="radio" name="options" > Off
 							  </label>
 							</div>
-				        </div>
-				    </div>
-				    <div class="form-group">
-				        <label class="col-sm-4 control-label" for="inputEmail3">Feed-URL</label>
-				        <div class="col-sm-6">
-				        	<div class="btn-group" data-toggle="buttons">
-						    <input type="url" class="btn btn-text active" id="rss_feed" placeholder="Type something...">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="inputEmail3">Feed-URL</label>
+						<div class="col-sm-6">
+							<div class="btn-group" data-toggle="buttons">
+							<input type="url" class="btn btn-text active" id="rss_feed" placeholder="Type something...">
 							  <label class="btn btn-primary" id="xyz">
-							    <input type="radio" name="options" > Off
+								<input type="radio" name="options" > Off
 							  </label>
 							</div>
-				        </div>
-				    </div>
-				    <div class="form-group">
-				        <label class="col-sm-4 control-label">Google in new Tab?</label>
-				        <div class="col-sm-6">
-				        	<div class="btn-group" data-toggle="buttons">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Google in new Tab?</label>
+						<div class="col-sm-6">
+							<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-primary" id="google_on">
-							    <input type="radio" name="options"> On
+								<input type="radio" name="options"> On
 							  </label>
 							  <label class="btn btn-primary" id="google_off">
-							    <input type="radio" name="options" > Off
+								<input type="radio" name="options" > Off
 							  </label>
 							</div>
-				        </div>
-				    </div>
+						</div>
+					</div>
 				</form>
 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" onclick="save_settings()">Save Settings</button>
-		      </div>
-		    </div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-primary" onclick="save_settings()">Save Settings</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="modal fade" id="newversion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">New version of Startpage available</h4>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-primary" >OK</button>
+			  </div>
+			</div>
 		  </div>
 		</div>
 	</div>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
+	</div>
   </body>
 </html>
